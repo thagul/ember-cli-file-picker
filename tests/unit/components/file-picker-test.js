@@ -48,7 +48,8 @@ test('it handles `filesAreValid` when it returns TRUE', function(assert) {
       },
       updatePreview: function() {
         assert.ok(true, '`handleFiles` continues execution when `filesAreValid returns true`');
-      }
+      },
+      fileLoaded: function() {}
     });
 
   component.handleFiles(files);
