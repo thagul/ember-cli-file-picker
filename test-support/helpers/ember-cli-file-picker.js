@@ -19,9 +19,15 @@ const uploadFileHelper = function(content, options) {
   const file = createFile(content, options);
 
   const event = jQuery.Event('change');
-  event.target = {
-    files: [file]
-  };
+  if (options.single) {
+    event.target = {
+      files: file
+    };
+  } else {
+    event.target = {
+      files: [file]
+    };
+  }
 
   jQuery('.file-picker__input').trigger(event);
 };
