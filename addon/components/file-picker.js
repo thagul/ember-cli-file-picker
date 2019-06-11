@@ -12,7 +12,6 @@ const {
     htmlSafe
   },
   isEmpty,
-  $
 } = Ember;
 
 
@@ -177,7 +176,7 @@ export default Component.extend({
   // Trigger a input click to open file dialog
   click: function(event) {
     if (this.get('selectOnClick') === true) {
-      if (!$(event.target).hasClass('file-picker__input')) {
+      if (!event.target.classList.contains('file-picker__input')) {
         this.$('.file-picker__input').trigger('click');
       }
     }
@@ -203,7 +202,7 @@ export default Component.extend({
 
     this.handleFiles(event.dataTransfer.files);
     this.set('count', 0);
-    this.$().removeClass('over');
+    this.element.classList.remove('over');
   },
   dragEnter: function(event) {
     if (event.preventDefault) {
@@ -218,7 +217,7 @@ export default Component.extend({
     }
     var count = this.incrementProperty('count');
     if (count === 1) {
-      this.$().addClass('over');
+      this.element.classList.add('over');
     }
   },
   dragLeave: function(event) {
@@ -231,7 +230,7 @@ export default Component.extend({
 
     var count = this.decrementProperty('count');
     if (count === 0) {
-      this.$().removeClass('over');
+      this.element.classList.remove('over');
     }
   },
 
