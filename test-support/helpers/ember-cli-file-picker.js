@@ -15,7 +15,7 @@ function createFile(content = ['test'], options = {}) {
   return file;
 }
 
-const uploadFileHelper = function(content, options) {
+const uploadFileHelper = function(content, options = {}) {
   const file = createFile(content, options);
 
   const event = jQuery.Event('change');
